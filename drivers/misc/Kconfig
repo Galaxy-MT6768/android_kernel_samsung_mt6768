@@ -537,6 +537,17 @@ config MEMORY_STATE_TIME
 	help
 	  Memory time statistics exported to /sys/kernel/memory_state_time
 
+config MTK_DTBO_FEATURE
+	bool "Support Device Tree Overlay"
+	default y
+	select BUILD_ARM_DTB_OVERLAY_IMAGE if !ARM64
+	select BUILD_ARM64_DTB_OVERLAY_IMAGE if ARM64
+	help
+	  This allows a central DTB and overlays it dynamically.
+	  An overlay can add nodes to the tree and make changes to properties
+	  in the existing tree.
+	  If you are not sure about this, set y
+
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
 source "drivers/misc/cb710/Kconfig"
